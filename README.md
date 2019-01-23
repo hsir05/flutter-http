@@ -1,16 +1,24 @@
-# http_demo
+### 1.flutter 网络请求例子
 
-A new Flutter project.
+#### 使用方式
 
-## Getting Started
+```
+import 'utils/http.dart';
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+void initState () {
+  super.initState();
+  getHttp();
+}
+void getHttp() async{
+    try {
+      var result = await Http().get("/in_theaters",data: {});
+      print(result);
+      setState(() {
+      title = result['title'];
+      subjects = result['subjects'];
+    });
+    }catch(e){
+      return print(e);
+    }
+}
+```
